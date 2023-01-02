@@ -21,4 +21,6 @@
 2) Select bootcamp and project
 
 ## How to push work to github
-1) 
+1) In terminal type: git add -A
+2) In terminal type: git commit -m "description of what you've done"
+3) Type: git push
