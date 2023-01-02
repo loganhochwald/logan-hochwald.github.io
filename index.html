@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Logan's Website</title>
+        <style>
+            body {
+                background: rgb(115, 83, 129);
+                color: rgb(45, 45, 45);
+                padding: 10px;
+                font-family: arial;
+            }
+            #all-contents {
+                max-width: 800px;
+                margin: auto;
+            }
+        
+            /* navigation menu */
+            nav {
+                background: rgb(118, 4, 4);
+                margin: 0 auto;
+                margin-bottom: 20px;
+                display: flex;
+                padding: 10px;
+            }
+            nav h1 {
+                display: flex;
+                align-items: center;
+                color: white;
+                flex: 1;
+                margin: 0;
+            }
+            nav ul {
+                list-style-image: none;
+            }
+            nav li {
+                display: inline-block;
+                padding: 0 10px;
+            }
+            nav a {
+                text-decoration: none;
+                color: #fff;
+            }
+        
+            /* main container area beneath menu */
+            main {
+                background: rgb(213, 212, 207);
+                display: flex;
+            }
+            .sidebar {
+                margin-right: 25px;
+                padding: 10px;
+            }
+            .sidebar img {
+                width: 200px;
+            }
+            .content {
+                flex: 1;
+                padding: 15px;
+            }
+            h2, h3 {
+                margin: 0px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="all-contents"> 
+            <nav>
+                <h1>Logan's Website</h1>
+                <ul>
+                    <li>
+                      <a href="index.html"> Home </a>
+                    </li>
+                    <li>
+                      <a href="portfolio.html"> Portfolio </a>
+                  </li>
+                </ul>
+                
+            </nav>
+    
+            <main>
+                <div class="sidebar">
+                    <img src="https://scontent-atl3-2.xx.fbcdn.net/v/t1.6435-9/149985914_3726316707455172_397322833752404738_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Rr1dhfnfeJcAX85mlaS&_nc_ht=scontent-atl3-2.xx&oh=00_AfDxqi6-GXd9ApydYa6seq8YwPnZikFwfp4frCfZyzW-kA&oe=63DAA283">
+                </div>
+            
+                <div class="content">
+                    <h2>Logan Hochwald</h2>
+                    <p>Student at Operation Spark</p>
+                    <div id="interests">
+                        <h3>Interests</h3>
+                        <ul>
+                            <li>Climbing</li>
+                            <li>Chemistry</li>
+                            <li>Coffee</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
