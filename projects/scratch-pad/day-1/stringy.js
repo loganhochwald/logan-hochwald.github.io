@@ -86,19 +86,17 @@ function toDashCase(string) {
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
    
-   var splitStringArray = string.split("");
-   //Splitting string by each character and storing into a newly created array called splitStringArray
-
-   if (splitStringArray[0] === char.toUpperCase) {
-    //If the first character in the array is equal to the uppercased char, return true string
-    return "True";
-   } else if (splitStringArray[0] === char.toLowerCase) {
-    //If first character in array is equal to the lowercased char, return true string
-    return "True";
-   } else {
-    //If they aren't equal, return false
-    return "False";
-   }
+    var array = [string.toUpperCase()];
+    //Localized array is storing the inputted string but all uppercased
+  
+    if (array[0][0] === char.toUpperCase()) {
+    //If the first letter of the first index of the array is equal to the inputted char that has also been capitalized, function returns true.
+    return true;
+    } else {
+    //If not equal, then function returns false.
+      return false;
+    }
+     
 
     // YOUR CODE ABOVE HERE //
 }
@@ -117,8 +115,17 @@ function beginsWith(string, char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
-
+    
+    var array = [string.toUpperCase()];
+    //Localized array is storing string that has been uppercaed
+  
+    if (array[0][string.length - 1] === char.toUpperCase()) {
+    //If the last letter of the string is equal to the inputted char that has also been capitalized, function returns true.
+    return true;
+    } else {
+    //If not equal, then function returns false.
+      return false;
+    }
 
     // YOUR CODE ABOVE HERE //
 }
@@ -190,14 +197,20 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
- var compare = stringOne.compareToIgnoreCase(stringTwo);
-
- if (compare < 0) {
-    return -1;
- } else {
+  
+   if (stringOne < stringTwo) {
+     //If stringOne is less than stringTwo, return 1 because that means stringOne is higher in the alphabet.
+     
     return 1;
- }
-
+   } else if (stringOne > stringTwo) {
+     //If greater than, return -1.
+     
+    return -1;
+   } else {
+     //Otherwise, they must be the same and zero is returned.
+     
+    return 0;
+   }
 
     // YOUR CODE ABOVE HERE //
 }
@@ -212,7 +225,20 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+    
+    if (stringOne > stringTwo) {
+        //If stringOne is greater than stringTwo, return 1 because that means stringOne is higher in the alphabet.
+        
+       return 1;
+      } else if (stringOne < stringTwo) {
+        //If less than, return -1.
+        
+       return -1;
+      } else {
+        //Otherwise, they must be the same and zero is returned.
+        
+       return 0;
+      }
 
 
 
