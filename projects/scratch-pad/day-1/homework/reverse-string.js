@@ -22,7 +22,17 @@
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
     
+    var newString = "";
+  //Creating localized variable to store the string characters into to return later
+  
+    for(var i = input.length - 1; i > -1; i--) {
+      //For loop that starts at the last letter of the input, then ends once the last letter has been hit.
+      newString += input[i];
+      //Adds the next letter determined by the [i] into newString.
+    }
     
+    return newString;
+  //Returning the inputted string that has been reversed and stored into newString
     
     
     // YOUR CODE GOES ABOVE HERE //
