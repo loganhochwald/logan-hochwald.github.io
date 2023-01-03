@@ -12,7 +12,32 @@
 */
 function fizzBuzz() {
     // YOUR CODE GOES BELOW HERE //
-
+    var i = 1;
+    //Creating localized variable for the while counter
+  
+    while (i <= 100) {
+    //While loops runs until 101 is reached by i
+  
+      if (i % 3 === 0 && i % 5 === 0) {
+        //If i has a zero remainder when it is divisible by both 3 and 5, print FizzBuzz
+        console.log("FizzBuzz");
+        //Print
+      } else if (i % 3 === 0) {
+        //If i has zero remainder with only 3, print Fizz
+        console.log("Fizz");
+        //Print
+      } else if (i % 5 === 0) {
+        //If i is divisible by 5, print Buzz
+        console.log("Buzz");
+        //Print
+      } else {
+        //If i isn't divisible by any of the numbers, then just print i to the console
+        console.log(i);
+        //Print
+      }
+      i++;
+      //Counter that runs while loop through next iteration
+    }
 
 
     // YOUR CODE GOES ABOVE HERE //
