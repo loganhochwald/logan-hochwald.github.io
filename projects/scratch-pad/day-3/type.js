@@ -15,7 +15,13 @@
 function isArray(value) {
     // YOUR CODE BELOW HERE //
     
-    
+    if (Array.isArray(value) === true) {
+    //If the array test is true, return true.
+        return true;
+    } else {
+    //Otherwise, return false
+        return false;
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -33,8 +39,7 @@ function isObject(value) {
     // YOUR CODE BELOW HERE //
     
     
-    
-    
+
     // YOUR CODE ABOVE HERE //
 }
 

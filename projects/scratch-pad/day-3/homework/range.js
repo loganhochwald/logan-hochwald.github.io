@@ -24,7 +24,27 @@
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
     
-    
+    var returningArray = [];
+    //Localized array to store the future integers
+
+  if (start < end) {
+//If first argument is greater than the second
+    for (var i = start; i <= end; i++) {
+    //The loop starts at the first integer of start, increments until it has passed through the value of the second integer
+      returningArray.push(i);
+      //Adds the integer denoted by variable i into the local empty array
+    }
+  } else {
+    for (var i = start; i >= end; i--) {
+    //If first argument is less than second, decrement from second integer to last integer
+      returningArray.push(i);
+      //Store into empty local array
+    }
+  }
+  
+  return returningArray;
+  //Return the now full array
+
     
     
     // YOUR CODE GOES ABOVE HERE //
