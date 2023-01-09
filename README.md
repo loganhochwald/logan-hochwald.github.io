@@ -24,3 +24,15 @@
 1) In terminal type: git add -A
 2) In terminal type: git commit -m "description of what you've done"
 3) Type: git push
+
+# If username or personal code was incorrect
+1) Run git commands and push all work to github so it's all been saved
+2) Open github and copy url from addressbar
+3) Go to gitpod.io/workspaces
+4) Delete workspace
+5) Go to address bar, add hastag, then paste the github url that you copied
+6) go to github.com/settings/tokens
+7) Generate a new token and call it whatever you want
+8) Make sure every box is checked
+9) Save the new personal access token somewhere safe!!
+10) Open new space and begin the os install stuff again, this time don't mess up

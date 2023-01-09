@@ -73,15 +73,17 @@ function makeContactList(id, nameFirst, nameLast) {
     //Last name key, stores what was put as the argument
     
     length: function() 
-    //Length function that returns the length of the contact array
+    //Length function that returns the length of the contact array list
     {
       return contacts.length;
+      //Returning length of contact array list
     },
     
     addContact: function (contact)
     //Add contact function that takes a new contact and pushes it into the contacts array 
     {
        return contacts.push(contact);
+       //Pushing new contact information into the contact array list
     
     },
     findContact: function (fullName)
@@ -92,6 +94,7 @@ function makeContactList(id, nameFirst, nameLast) {
         if(fullName === contacts[i]["nameFirst"] + " " + contacts[i]["nameLast"]) {
           //If the fullName argument matches the first name and last name of the contact, then it returns that contact name at the specific index observed
           return contacts[i];
+          //Returning contact name at that index
         }
       }
     },
@@ -111,18 +114,20 @@ function makeContactList(id, nameFirst, nameLast) {
     //Prints all of the contact names function
     {
       var stringOfContacts = "";
+      console.log(contacts);
       //Creating empty string to store the name of the contacts within it
       for (var i = 0; i < contacts.length; i++) {
         //Runs through entire contacts array
         if (i < contacts.length - 1) {
-        //If the counter has a length less than the last index of the array, add the index information and \n to stringOfContacts string
-        stringOfContacts += contacts[i] + "\n";
-        //Adding to string
+        //If the index is less than the last position in the array
+        stringOfContacts += contacts[i]["nameFirst"] + " " + contacts[i]["nameLast"] + "\n";
+        //Add the first and last name plus a newline character to stringOfContacts
         } else {
-          //Once we've reached the end, only add the array information and not the \n this time so that there is no newline character at the end of the return list
-          stringOfContacts += contacts[i];
+          stringOfContacts += contacts[i]["nameFirst"] + " " + contacts[i]["nameLast"];
+          //Once we've reached the last index, same deal but don't add a newline character to the string
         }
       }
+      
       return stringOfContacts;
       //Returns the now filled stringOfContacts
     }
