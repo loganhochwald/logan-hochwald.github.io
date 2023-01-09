@@ -36,21 +36,75 @@
 // YOUR CODE GOES BELOW HERE //
 function makeContact(id, nameFirst, nameLast) {
 
+    var objContact = {
+        id,
+        nameFirst,
+        nameLast
+      };
+    //Creating the empty object to be filled by the parameters inserted into the function
+
+    objContact.id = id;
+    //Assigning id parameter to id key
+    objContact.nameFirst = nameFirst;
+    //Assigning nameFirst parameter to nameFirst key
+    objContact.nameLast = nameLast;
+    //Assigning nameLast parameter to namelast key
+    
+    return objContact;
+    //Returning the newly filled object
+
 } 
 
 
-function makeContactList() {
+function makeContactList(id, nameFirst, nameLast) {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts;
+    var contacts = [];
     
     return {
-        // we implemented the length api for you //
-        length: function() {
+        id: id,
+        nameFirst: nameFirst,
+        nameLast: nameLast,
+    
+    length: function() 
+    {
             return contacts.length;
+    },
+    
+    addContact: function (contact) 
+    {
+       return contacts.push(contact);
+    
+    },
+    findContact: function (fullName) 
+    {
+      for (var i = 0; i <= contacts.length - 1; i++) {
+        if(fullName === contacts[i]["nameFirst"] + " " + contacts[i]["nameLast"]) {
+          return contacts[i];
         }
+      }
+    },
+    removeContact: function (contact) 
+    {
+      for (var i = 0; i <= contacts.length - 1; i++) {
+        if (contacts[i] === contact) {
+          return contacts.splice(i, 1);
+        }
+      }
+    },
+    printAllContactNames: function () 
+    {
+        var stringReturn = "";
+
+        for (var i = 0; i <= contacts.length - 1; i++) {
+          stringReturn += contacts[i] + "/n";
+        }
+        return stringReturn;
     }
+      
+      };
+
 }
 
 
