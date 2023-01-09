@@ -39,11 +39,12 @@ function isObject(value) {
     // YOUR CODE BELOW HERE //
     
     if (typeof(value) == "object" && Array.isArray(value) !== true && (value instanceof Date) !== true && value !== null) {
-        
+    //If it isn't an array, date, or null but is an object, then collection type
         return true;
+        //Returns true if collection type
     } else {
-        
         return false;
+        //Otherwise returns false
     }
     
 
@@ -60,11 +61,12 @@ function isCollection(value) {
     // YOUR CODE BELOW HERE //
 
     if (typeof(value) == "object" && (value instanceof Date) !== true && value !== null || Array.isArray(value) == true) {
-        
+    //If an object and not a date and null, OR is an array, return true
         return true;
+        //Returning statement
     } else {
-        
         return false;
+        //Otherwise return false
     }
     
     
@@ -97,17 +99,22 @@ function typeOf(value) {
     console.log(value);
 
     if (Array.isArray(value) == true) {
+        //If array
         return "array";
     } else if (value == null) {
+        //If null
         return "null";
     } else if (typeof(value) == "number") {
+        //If number
         return "number";
     } else if (value instanceof Date == true) {
+        //If date
         return "date";
     } else if (typeof(value) == "string") {
+        //If string
         return "string";
-    }
-    else {
+    }else {
+        //Otherwise a function within this test
         return "function";
     }
     

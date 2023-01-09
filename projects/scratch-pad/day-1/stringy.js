@@ -201,11 +201,11 @@ function sortAscending(stringOne, stringTwo) {
    if (stringOne < stringTwo) {
      //If stringOne is less than stringTwo, return 1 because that means stringOne is higher in the alphabet.
      
-    return 1;
+    return -1;
    } else if (stringOne > stringTwo) {
      //If greater than, return -1.
      
-    return -1;
+    return 1;
    } else {
      //Otherwise, they must be the same and zero is returned.
      
@@ -229,11 +229,11 @@ function sortDescending(stringOne, stringTwo) {
     if (stringOne > stringTwo) {
         //If stringOne is greater than stringTwo, return 1 because that means stringOne is higher in the alphabet.
         
-       return 1;
+       return -1;
       } else if (stringOne < stringTwo) {
         //If less than, return -1.
         
-       return -1;
+       return 1;
       } else {
         //Otherwise, they must be the same and zero is returned.
         
