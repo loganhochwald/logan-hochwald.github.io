@@ -171,6 +171,24 @@ for(i in object.friends) {
 
 function nonFriends(name, array) {
 
+    let notFriends = [];        //list to return
+    let allFriends = [];      //list of all possible friends
+    let obj = {};                 //the object that were working with,
+    for(i in array){
+        if(array[i]['name'] === name){
+            Object.assign(obj, array[i]);   //assign obj to our relevant object
+        } else{
+            allFriends.push(array[i]["name"]) //push other names into allFriends
+    }}
+    //for every element in allFriends
+    for(i in allFriends){
+        //if its not in obj.friends
+        if(!(obj.friends.includes(allFriends[i]))){
+            //push that element to notFriends
+            notFriends.push(allFriends[i]);
+    }}
+    return notFriends;
+
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -178,6 +196,9 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
+
+   object[key] = value;
+   return object;
 
 }
 
@@ -187,6 +208,10 @@ function updateObject(object, key, value) {
 
 function removeProperties(object, array) {
 
+    for(i of array) {
+        delete object[i];
+    }
+
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -194,6 +219,14 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
+    
+    let arr = []; 
+    for(i in array){
+        if(!arr.includes(array[i])){
+            arr.push(array[i])
+        }
+    }
+    return arr;
 
 }
 
