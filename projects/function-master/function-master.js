@@ -17,13 +17,21 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
+
     var string = "";
+    //Declaring an empty string to be used for later
 
     for(i in object) {
+    //For-loop running through the object keys
         string += i.toString() + " ";
+        //Every iteration, add the key that is turned into a string to string, but also add a space at the end
     }
+    
     string = string.slice(0, -1);
+    //Removes the extra space at the end of the string
+    
     return string;
+    //Returns the string
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -31,16 +39,23 @@ function keysToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
+
     var string = "";
+    //Declaring empty string to be used later
 
     for(i in object) {
+    //For-loop iterating through the keys of the object
         if (typeof object[i] === "string") {
-       string += object[i].toString() + " ";
+        //If the object's key contains a string
+       string += object[i]+ " ";
+       //Add the key then add a space after it for each iteration
         }
     }
     string = string.slice(0, -1);
+    //Remove the last extra space that isn't needed
     
     return string;
+    //Return the now modified string
     
 }
 
@@ -51,10 +66,13 @@ function valuesToString(object) {
 function arrayOrObject(collection) {
 
     if (Array.isArray(collection) === true) {
+    //If it is an array
         return "array";
     } else if (typeof collection === "object") {
+    //If it is an object (ignoring array because this would be skipped if it was)
         return "object";
     } else {
+        //Otherwise just return
         return;
     }
     
@@ -67,6 +85,7 @@ function arrayOrObject(collection) {
 function capitalizeWord(string) {
     
     return string.substring(0, 1).toUpperCase() + string.substring(1);
+    //First substring removes first letter, capitalizes it, and then adds it back to the rest of the string minus the first letter
 
 }
 
@@ -77,14 +96,20 @@ function capitalizeWord(string) {
 function capitalizeAllWords(string) {
     
     var words = string.split(" ");
+    //Splits the inputted string by their spaces and stores them into an array
     var returnString = "";
+    //Creating empty string to be used later
 
     for(i of words){
+    //For loop that iterates through the array of strings
         returnString += capitalizeWord(i) + " ";
+        //Stores the array value that uses the previously created function to capitalize the first letter with a space after it
     }
     returnString = returnString.slice(0, -1);
+    //Removes the last unneeded space
+
     return returnString;
-    
+    //Returns the now modified returnString
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -92,8 +117,9 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
-    var objectName = object.name;
-    return "Welcome " + capitalizeWord(objectName) + "!";
+    
+    return "Welcome " + capitalizeWord(object.name) + "!";
+    //Uses the previously created function to capitalize the data in the name property of the inputted object
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -101,10 +127,8 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-    var objectName = object.name;
-    var objectSpecies = object.species;
-    return capitalizeWord(objectName) + " is a " + capitalizeWord(objectSpecies);
-
+    return capitalizeWord(object.name) + " is a " + capitalizeWord(object.species);
+    //capitalizeWord has been initialized earlier, simply recalling object properties by using dot notation
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -112,17 +136,27 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-        if (object.noises !== undefined){
-          if (object.noises.length !== 0){
+
+    if (object.noises !== undefined){
+    //If the noises property exists in the object
+        if (object.noises.length !== 0){
+        //If there's data in the noises property
             let str = '';
+            //Creating string variable in the function scope
             for (i in object.noises) {
-              str += object.noises[i] + ' '
+            //Iterating through the object's noises property that contains an array
+              str += object.noises[i] + ' ';
+              //Adds the array at the indicated index and adds a space at the end
             }
-            str = str.slice(0, -1)
+            str = str.slice(0, -1);
+            //Removes the last unnecessary space
             return str;
-          }
+            //Returns the now filled/modified function scope string
         }
-        return 'there are no noises'
+    }
+    
+    return 'there are no noises';
+    //If the if/else statement doesn't use return and break out of the function, then this is returned instead
 
 }
 
@@ -133,12 +167,18 @@ function maybeNoises(object) {
 function hasWord(string, word) {
 
     var words = string.split(" ");
+    //Function scoped words has an array of strings stored into it, which separated the string by the spaces
+
     for(i of words) {
+    //For-loop iterates through the words array
         if(i === word) {
+        //If the string at the current array is equal to the word argument
             return true;
+            //Return true
         }
     }
     return false;
+    //Returns false if the return statement in if was not reached to break out of the function
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -147,7 +187,9 @@ function hasWord(string, word) {
 
 function addFriend (name, object) {
     object.friends.push(name);
+    //Pushes the name argument into the object's friends array
     return object;
+    //Returns the now modified object argument
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -157,11 +199,15 @@ function addFriend (name, object) {
 function isFriend(name, object) {
 
 for(i in object.friends) {
+//Iterating through the array in the friends property of the object argument
     if(object.friends[i] === name) {
+    //If the array's value at the specified index (using dot and bracket notation) is equal to the name argument
         return true;
+        //Returns true if this condition is true
     }
 }
     return false;
+    //If the return in the if statement is not reached to break out of the function, this return statement is run instead
 
 }
 
