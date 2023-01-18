@@ -219,13 +219,15 @@ function nonFriends(name, array) {
 
     let notFriends = [];        //list to return
     let allFriends = [];      //list of all possible friends
-    let obj = {};                 //the object that were working with,
+    let obj = {};  
+    console.log(array);              //the object that were working with,
     for(i in array){
         if(array[i]['name'] === name){
             Object.assign(obj, array[i]);   //assign obj to our relevant object
         } else{
             allFriends.push(array[i]["name"]) //push other names into allFriends
     }}
+    console.log(obj);
     //for every element in allFriends
     for(i in allFriends){
         //if its not in obj.friends
