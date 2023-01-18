@@ -52,6 +52,7 @@ function fizzBuzz() {
 function drawChessboard(width, height) {
 
 var board = "";
+//Our board is being stored here
 
 for (var i = 0; i < width; i++) {
   //For-loop for height, determines how many times width runs
@@ -62,9 +63,11 @@ for (var i = 0; i < width; i++) {
     if (x % 2 === 0) {
       //If even
       board += "#";
+      //Add a # to the board variable
     } else {
       //If odd
       board += " ";
+      //Add a space to the board variable
     }
   }
   board += "\n";
@@ -76,16 +79,20 @@ for (var i = 0; i < width; i++) {
       if (!(x % 2 === 0)) {
         //If odd
         board += "#";
+        //Add # to the board variable
       } else {
         //If even
         board += " ";
+        //Add space to the board variable
       }
     }
     board += "\n";
+    //After each iteration of height, add a newline character to start a new board line
   }
 
 }
 console.log(board);
+//Logs the finished board to the console
 
 }
 

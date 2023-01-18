@@ -2,7 +2,10 @@
 // min /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function min() {
+function min(num1, num2) {
+
+  return Math.min(num1, num2);
+  //Returns the smallest number in the set
 
 }
 
@@ -10,7 +13,15 @@ function min() {
 // isEven //////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function isEven() {
+function isEven(num) {
+
+  num = Math.abs(num);
+  if (num === 0) 
+    return true;
+  else if (num === 1)
+    return false;
+  else 
+    return isEven(num - 2);
 
 }
 
@@ -18,7 +29,16 @@ function isEven() {
 // countChars //////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function countChars() {
+function countChars(string, char) {
+
+  var counter = 0;
+
+  for (var i = 0; i < string.length; i++) {
+    if (string[i] === char) {
+      counter++;
+    }
+  }
+  return counter;
 
 }
 
@@ -26,7 +46,16 @@ function countChars() {
 // countBs /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function countBs() {
+function countBs(string) {
+
+  var counterB = 0;
+
+  for (var i = 0; i < string.length; i++) {
+    if (string[i] === "B") {
+      counterB++;
+    }
+  }
+  return counterB;
 
 }
 
