@@ -16,12 +16,17 @@ function min(num1, num2) {
 function isEven(num) {
 
   num = Math.abs(num);
-  if (num === 0) 
+  //Absolute value of num in case it's negative
+
+  if (num === 0)
+  //If even 
     return true;
   else if (num === 1)
+  //If odd
     return false;
   else 
     return isEven(num - 2);
+    //Needs to iterate through itself again where num has 2 subtracted from it each time called recursion. Eventually hits 1 or 0
 
 }
 
@@ -32,13 +37,18 @@ function isEven(num) {
 function countChars(string, char) {
 
   var counter = 0;
+  //Counter to be used every hit
 
   for (var i = 0; i < string.length; i++) {
+    //Iterating through the string
     if (string[i] === char) {
+      //If the string's char at the index is the same as the char argument
       counter++;
+      //Add 1 to the counter's stored value
     }
   }
   return counter;
+  //Returns the modified counter (or unmodified if there are no matches)
 
 }
 
@@ -49,13 +59,18 @@ function countChars(string, char) {
 function countBs(string) {
 
   var counterB = 0;
+  //Counter for B hits
 
   for (var i = 0; i < string.length; i++) {
+    //Iterates through the string's length
     if (string[i] === "B") {
+      //If the string's char at the specific index is a capital B
       counterB++;
+      //Add 1 to the counterB's stored value
     }
   }
   return counterB;
+  //Return the modified (maybe unmodified) counter value
 
 }
 
