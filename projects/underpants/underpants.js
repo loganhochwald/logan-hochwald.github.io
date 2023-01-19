@@ -94,7 +94,11 @@ _.first = function (arr, num) {
         } else {
             if (num >= 0) {
             var returnArr = [];
-            
+            if (num > arr.length) {
+                console.log(num, arr.length);
+                num = arr.length;
+                console.log(num);
+            }
             for(var i = 0; i < num; i++) {
                 if (num <= arr.length - 1) {
                 returnArr.push(arr[i]);
@@ -380,7 +384,37 @@ _.every = function(collection, func) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
-//Alex is going over this this week so we don't have to do this alone
+//When reduce method is invoked, it checks for seed value. Seed value is to give the function a starting point.
+
+//Seed value initializes the value that is eventually going to be returned
+
+//result = func(result, currentVal, currentIndex, collection)
+
+//let example = _.reduce(nums, function(accumulator, current, index, coll){ return accumulator + current;}, 0);
+//Can also call accumulator previous that is common
+
+_.reduce = function (array, func, seed) {
+    //determine if no seed
+
+    let result;
+
+    if (seed === undefined) {// determines if seed is not truthy
+        seed = array[0];
+        for (let i = 1; i < array.length; i++) {
+            result = func(result, array[i], i);
+            //Every time we iterate, the function uses the current updated values
+        }
+    } else {//There is a seed
+        result = seed;
+        for (let i = 0; i < array.length; i++) {
+            result = func(result, array[i], i);
+            //Every time we iterate, this function uses the current updated values
+            //After result is updated, the final value is returned
+        }
+    }
+
+    return result;
+}
 
 
 
