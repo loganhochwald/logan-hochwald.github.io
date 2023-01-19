@@ -2,7 +2,14 @@
 // flatten /////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function flatten() {
+function flatten(arrays) {
+
+  let flattened = arrays.reduce(
+    function(accumulator, currentValue) {
+        return accumulator.concat(currentValue);
+    }
+)
+return flattened;
 
 }
 
