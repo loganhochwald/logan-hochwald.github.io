@@ -3,6 +3,8 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
+// const { indexOf } = require("lodash");
+
 var _ = {};
 
 
@@ -22,6 +24,7 @@ var _ = {};
 */
 _.identity = function (value) {
     return value;
+    //Returns the data within value argument
 
 };
 
@@ -47,22 +50,31 @@ _.identity = function (value) {
 
 _.typeOf = function (value) {
     if (Array.isArray(value) === true) {
+        //If value is an array return "array"
         return "array";
     } else if (value === null) {
+        //If there's no data in value return null
         return "null";
     } else if (typeof(value) === "number") {
+        //If typeof value returns a string saying numner return "number"
         return "number";
     } else if (typeof(value) === "string") {
+        //If typeof value returns a string saying string return "string"
         return "string";
     } else if (value instanceof Date === true) {
+        //If the instanceof the value is a date and returns true, return "date"
         return "date";
     } else if (value === undefined) {
+        //If the value has not been assigned a value, return "undefined"
         return "undefined";
     } else if (typeof(value) === "boolean") {
+        //If typeof value returns a string of "boolean", return "boolean"
         return "boolean";
     } else if (typeof(value) === "object") {
+        //If typeof value returns a string of "object", return "object"
         return "object";
     } else {
+        //If none of those tests pass, then return "function"
         return "function";
     }
 }
@@ -84,32 +96,32 @@ _.typeOf = function (value) {
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
-_.first = function (arr, num) {
+_.first = function (array, number) {
 
-    if (Array.isArray(arr) !== true) {
-        return [];
-    } else {
-        if (num === undefined || typeof(num) !== "number") {
-            return arr[0];
-        } else {
-            if (num >= 0) {
-            var returnArr = [];
-            if (num > arr.length) {
-                console.log(num, arr.length);
-                num = arr.length;
-                console.log(num);
-            }
-            for(var i = 0; i < num; i++) {
-                if (num <= arr.length - 1) {
-                returnArr.push(arr[i]);
-            }
-        }
-            return returnArr;
-            } else {
-                return [];
-            }
-        }
+    if(number === undefined) {
+        //If there's no value stored in number
+        return array[0];
+        //Return the first index of the array
     }
+
+    if (!Array.isArray(array) || number < 0) {
+        //If the type isn't an aray or the number is less than zero, return an empty array
+        return [];
+    } 
+    if (typeof(number) !== "number") {
+        //If the number is not a number type
+        return array[array.length - 1];
+        //Return the last value of the array
+    }
+       
+    if (number > array.length) {
+        //If the numner is greater than the length of the array
+        return array;
+        //Return the entire array
+    }
+
+    return array.slice(0, number);
+    //Return the number of indexes of the array as number
 
 }
 
@@ -131,6 +143,36 @@ _.first = function (arr, num) {
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function (array, number) {
+
+    if(number === undefined) {
+        //If there is no value stored in number
+        return array[array.length - 1];
+        //Return the last value of the array
+    }
+
+    if (!Array.isArray(array) || number < 0) {
+        //If array isn't an array or number is negative
+        return [];
+        //Return an empty array
+    } 
+    if (typeof(number) !== "number") {
+        //If number isn't a numnber
+        return array[array.length - 1];
+        //Return the last value of the array
+    }
+       
+    if (number > array.length) {
+        //If number is larger than the length of the array
+        return array;
+        //Return the array's value
+    }
+
+    return array.slice(number - 1);
+    //Return the last number of items in the array, determined by inputted number, if none of the other conditions were met
+
+}
+
 
 /** _.indexOf
 * Arguments:
@@ -148,6 +190,19 @@ _.first = function (arr, num) {
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+_.indexOf = function (array, value) {
+
+    for (var i = 0; i < array.length; i++) {
+        //Iterating through the array
+        if (array[i] === value) {
+            //If the value of the array at the current index is the same as the inputted value
+            return i;
+            //Return the index at which they're equal
+        }
+    }
+    return -1;
+    //Return -1 if there's no match
+}
 
 /** _.contains
 * Arguments:
@@ -164,6 +219,33 @@ _.first = function (arr, num) {
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+/*Ternary operator:
+
+condition ? expressionIfTruthy : expressionIfFalsey
+
+*/
+
+_.contains = function (array, value) {
+
+    let isTrue = 0;
+    //Variable that will count how many times the value is within the array
+
+    for (var i = 0; i < array.length; i++) {
+        //Iterating through the array
+        if (array[i] === value) {
+            //If the data within the current array index is equal to value
+            isTrue += 1;
+            //Add 1 to the value stored in isTrue
+        }
+    }
+    if (isTrue > 0) {
+        //If there are any values equivalent to the data in the array, isTrue will be greater than the initialized value of 0
+        return true;
+        //Return true then because there was at least one match
+    }
+    return false;
+    //Returns false if true was not returned
+}
 
 /** _.each
 * Arguments:
@@ -209,6 +291,23 @@ _.each = function(collection, func) {
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function (array) {
+
+    let noDuplicatesArray = [array[0]];
+    //Filling the array with the first index of the array argument so we can start comparing duplicates immediately
+
+    for (var i = 0; i < array.length; i++) {
+        //Iterating through entire array
+        if (this.indexOf(noDuplicatesArray, array[i]) < 0) {
+            //If the indexOf returns -1, then there is no duplicate, so the test is < 0
+            noDuplicatesArray.push(array[i]);
+            //Since there was no duplicate, you can push the data at the current array index into the new array
+        }
+    }
+    return noDuplicatesArray;
+    //Returns the now modified noDuplicatesArray
+}
+
 
 /** _.filter
 * Arguments:
@@ -226,6 +325,25 @@ _.each = function(collection, func) {
 *   use _.each in your implementation
 */
 
+_.filter = function (array, aFunction) {
+
+    let newArray = [];
+    //Declaring a new, empty array
+    
+    for (let i = 0; i < array.length; i++) {
+        //Iterating through the array argument
+
+        if (aFunction(array[i], i, array)) {
+            //If this function returns truthy
+            newArray.push(array[i]);
+            //Push the value in the current array index into newArray
+        }
+    }
+
+    return newArray;
+    //Return the potentially modified array
+}
+
 
 /** _.reject
 * Arguments:
@@ -239,6 +357,26 @@ _.each = function(collection, func) {
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
+
+_.reject = function (array, aFunction) {
+
+    let newArray = [];
+    //Declaring a new, empty array
+    
+    for (let i = 0; i < array.length; i++) {
+        //Iterating through the array argument
+
+        if (!aFunction(array[i], i, array)) {
+            //If this function returns falsey
+            newArray.push(array[i]);
+            //Push the value in the current array index into newArray
+        }
+    }
+
+    return newArray;
+    //Return the potentially modified array
+    
+}
 
 
 /** _.partition
@@ -260,6 +398,33 @@ _.each = function(collection, func) {
 }
 */
 
+_.partition = function (array, aFunction) {
+
+    let newArray = [];
+    let truthyArray = [];
+    let falseyArray = [];
+    //Declaring a new, empty arrays
+    
+    for (let i = 0; i < array.length; i++) {
+        //Iterating through the array argument
+
+        if (aFunction(array[i], i, array)) {
+            //If this function returns truthy
+            truthyArray.push(array[i]);
+            //Push the value in the current array index into truthyArray
+        } else {
+            //The function return falsey
+            falseyArray.push(array[i]);
+            //Push the value in the current array index into falseyArray
+        }
+    }
+    newArray.push(truthyArray, falseyArray);
+    //Pushing the two arrays into newArray
+
+    return newArray;
+    //Returning the potentially modified newArray
+}
+
 
 /** _.map
 * Arguments:
@@ -277,6 +442,33 @@ _.each = function(collection, func) {
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function (aCollection, aFunction) {
+
+    let newArray = [];
+    //Delcaring empty array
+
+    if (Array.isArray(aCollection)) {
+        //If aCollection is an array
+        for (let i in aCollection) {
+            //Iterating through aCollection
+            newArray.push(aFunction(aCollection[i], i, aCollection));
+            //Push the function call into newArray with the element, the index, and aCollection
+        }
+    } else if (typeof(aCollection) === "object") {
+        //If aCollection is an object (but isn't an array)
+        for (let i in aCollection) {
+            //Iterate through aCollection
+            newArray.push(aFunction(aCollection[i], i, aCollection));
+            //Push the function call into newArray with the value, key, and aCollection
+        }
+    }
+
+    return newArray;
+    //Return the potentially modified array
+    
+
+}
+
 
 /** _.pluck
 * Arguments:
@@ -288,6 +480,22 @@ _.each = function(collection, func) {
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+
+_.pluck = function (arrayOfObjects, property) {
+
+    let newArray = [];
+    //Defining empty array
+   
+    for(let i = 0; i < arrayOfObjects.length; i++) {
+        //Running through the array
+        newArray.push(Object.values(arrayOfObjects[i])[0]);
+        //Pushing the first proprty (using [0]) of the object located in the current array index into newArray
+    }
+
+    return newArray;
+    //Returning the now modified array
+
+}
 
 
 /** _.every
@@ -364,6 +572,51 @@ _.every = function(collection, func) {
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function (aCollection, aFunction) {
+
+    if (!aFunction) {
+        //If a function was not passed
+        for (let i in aCollection) {
+            //Iterating through the collection
+            if (aCollection[i] === true) {
+                //If the value stored in the key or array index is true
+                return true;
+                //Returns true
+            }
+        }
+    }
+
+
+    if(this.typeOf(aFunction) === "function") {
+        //If a function is passed
+        if(Array.isArray(aCollection)) {
+            //If the collection is an array
+            for (let i in aCollection) {
+                //Iterating through the collection
+                if (aFunction(aCollection[i], i, aCollection)) {
+                    //If the function returns true containing array element, index, and array
+                    return true;
+                    //Returns true
+                }
+            }
+        } else if (typeof(aCollection) === "object") {
+            //If aCollection is an object (but isn't an array)
+            for (let i in aCollection) {
+                //Iterate through aCollection keys
+                if (aFunction(aCollection[i], i, aCollection)) {
+                    //If the function returns true with arguments of object key's value, key, and object
+                    return true;
+                    //Return true
+                }
+            }
+        }
+    }
+
+    return false;
+    //If the return true are not passed, return false
+
+}
+
 
 /** _.reduce
 * Arguments:
@@ -384,38 +637,40 @@ _.every = function(collection, func) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
-//When reduce method is invoked, it checks for seed value. Seed value is to give the function a starting point.
-
-//Seed value initializes the value that is eventually going to be returned
-
-//result = func(result, currentVal, currentIndex, collection)
-
-//let example = _.reduce(nums, function(accumulator, current, index, coll){ return accumulator + current;}, 0);
-//Can also call accumulator previous that is common
-
 _.reduce = function (array, func, seed) {
     //determine if no seed
 
     let result;
+    //Delaring result variable
 
-    if (seed === undefined) {// determines if seed is not truthy
-        seed = array[0];
+    if (seed === undefined) {
+        //If there is no seed/falsey
+        result = seed = array[0];
+        //Result is set as the seed value which is set as the value stored in the array 0 index
+        
         for (let i = 1; i < array.length; i++) {
             result = func(result, array[i], i);
             //Every time we iterate, the function uses the current updated values
         }
-    } else {//There is a seed
+    } else {
+        //There's a seed argument
         result = seed;
+        //Result is set as the seed argument
         for (let i = 0; i < array.length; i++) {
+            //Iterating through array
             result = func(result, array[i], i);
             //Every time we iterate, this function uses the current updated values
             //After result is updated, the final value is returned
         }
     }
-
     return result;
+    //Returning the value in result
 }
-
+//When reduce method is invoked, it checks for seed value. Seed value is to give the function a starting point.
+//Seed value initializes the value that is eventually going to be returned
+//result = func(result, currentVal, currentIndex, collection)
+//let example = _.reduce(nums, function(accumulator, current, index, coll){ return accumulator + current;}, 0);
+//Can also call accumulator previous that is common
 
 
 /** _.extend
@@ -431,6 +686,46 @@ _.reduce = function (array, func, seed) {
 *   var data = {a:"one"};
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
+*/
+
+
+_.extend = function () {
+
+    let allArguments = Array.from(arguments);
+    //Contains an array of the arguments passed
+
+    for(let i = 0; i < allArguments.length; i++) {
+        //Iterating through allArguments array
+        Object.assign(allArguments[0], allArguments[i]);
+        //Assigns the data in the object at the current array index into the array's 0 index
+    }
+
+    return allArguments[0];
+    //Returns the modified first object at the array's 0 index
+
+}
+
+/*
+
+_.extend = function () {
+
+    let allArguments = Array.from(arguments);
+    //Contains an array of the arguments passed
+    let fillingObject = {};
+    //Empty object to be filled by the array index
+    let returningObject = {};
+    //Storing the data coped from fillingObject then returned
+
+
+    for(let i = 0; i < allArguments.length; i++) {
+        fillingObject = allArguments[i];
+        Object.assign(returningObject, fillingObject);
+    }
+    console.log(returningObject);
+
+    return returningObject;
+
+}
 */
 
 //////////////////////////////////////////////////////////////////////
