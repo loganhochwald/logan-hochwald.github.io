@@ -17,23 +17,51 @@ return flattened;
 // loop ////////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function loop() {
-
+function loop(start, test, update, body) {
+  for (let value = start; test(value); value = update(value)) {
+    //Running test function over array, then runs update function on value
+    body(value);
+    //Updating body function with value
+  }
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
+function every(array, predicate) {
 
+  for (let element of array) {
+    //Running through every element of the array
+    if (!predicate(element)) {
+      //If the predicate function is false
+      return false;
+    }
+  }
+  return true;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
+function dominantDirection(string) {
+
+  let counted = countBy(string, char => {
+    //Declaring countBy function using counted var, takes in string and char as arguments (pre-defined function)
+    let script = characterScript(char.codePointAt(0));
+    //Script variable is the function that takes in the char's code point at the 0 index
+    return script ? script.direction : "none";
+    //If script return script direction otherwise return "none"
+  }).filter(({name}) => name != "none");
+  //If no name in object, then name is not none
+
+  if (counted.length == 0) {
+    return "ltr";
+  }
+
+  return counted.reduce((a, b) => a.count > b.count ? a : b).name;
+  //Returns with the reduce function
 
 }
 

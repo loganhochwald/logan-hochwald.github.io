@@ -112,11 +112,19 @@ function reverseArrayInPlace(array) {
 
 function arrayToList(array) {
 
-  let list = {};
+  let list = null;
+  //Defining list which has nothing in it at first
 
-  for(let i = 0; i < array.length; i++) {
-    list.value = array[i];
+  for (let i = array.length - 1; i >= 0; i--) {
+    //As we interate through the array decrementing until i is equal to 0
+    list = {
+      value: array[i], 
+      rest: list}
+    //List adds new values to it, the array's data in current index and the list values
   }
+
+  return list;
+  //Return the value in list
 
 }
 
@@ -124,24 +132,65 @@ function arrayToList(array) {
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray() {
+function listToArray(theList) {
 
+  let array = [];
+  //Declaring empty array
+
+  for (let info = theList; info; info = info.rest) {
+    //Iterating through theList
+    array.push(info.value);
+    //Push the value of info into the array
+  }
+
+  return array;
+  //Returning the now modified array
 
 }
+
+/*
+var list = {
+  value: 1,
+  rest: {
+    value: 2,
+    rest: {
+      value: 3,
+      rest: null
+    }
+  }
+};
+
+*/
 
 ////////////////////////////////////////////////////////////////////////////////
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
-
+function prepend(value, list) {
+  return {
+    value, 
+    rest: list};
+  //Returning an object that has value as one key and the rest adding the list to it
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth() {
+function nth(list, element) {
+
+  if ((!list)) {
+  return undefined;
+  //If there's no list, return undefined
+  } else if (element == 0) {
+    //If element has a zero value, don't need to add more
+    return list.value; 
+    //Returns the value in list
+  } else {
+    return nth(list.rest, element - 1);
+    //Returns the function nth, which takes in list.rest and element - 1 to be run again through the function
+  }
+ 
 
 }
 
@@ -151,46 +200,42 @@ function nth() {
 
 function deepEqual(value1, value2) {
 
-  //Return true if same value or are objects with same properties
-  //Compare properties with a recursive call to the function
-  //Make sure null is not considered when analyzing the object
-  //If the object is an array, don't use the recursive function
-  //Should return true as the last statement, the if/else are tests to return false
+  if (value1 === value2) {
+    //If they're the same object
+    return true;
+    //Return true
+  }
 
-  if (!(value1 === value2)) {
-    //If they're not the same value
+  if (value1 == null || value2 == null || typeof value1 != "object"
+   || typeof value2 != "object") {
+    //If one of the values are nonexistent or they aren't objects
     return false;
-    //Returns false
+    //Return false
+  }
 
-  } else if (typeof(value1, value2) === "object") {
-    //If they are both object types:
+  let keysValue1 = Object.keys(value1); 
+  let keysValue2 = Object.keys(value2);
+  //Assigning new variables to the keys of the objects
 
-    if (Array.isArray(value1) === true) {
-      //If they are arrays:
-      if (!Arrays.equal(value1, value2)) {
-        //If the two arrays are not the same, return false
-        return false;
-      }
+  if (keysValue1.length != keysValue2.length) {
+    //If the length isn't the same, this means they don't have the exact same keys
+  return false;
+  //Return false
+  }
+
+  for (let key of keysValue1) {
+    //Iterating through the keys of value1 object
+    if (!keysValue2.includes(key) || !deepEqual(value1[key], value2[key])) {
+      //If value2 key's don't include the key of value1 or the data in the key (comparing potential nested array/object access)
+      return false;
+      //Return false
     }
-
-    
-    //Now if they're object collections:
-    if (!(Object.keys(value1).length == Object.keys(value2).length)) {
-        return false;
-
-    } else {
-      for (key in value1) {
-        if(!Object.keys(value2).includes(key) || !deepEqual(value1[key], value2[key])) {
-          return false;
-        }
-      }
-
-    }
-
-    
   }
 
   return true;
+  //Return true if none of the falses are returned
+
+  
 
 }
 

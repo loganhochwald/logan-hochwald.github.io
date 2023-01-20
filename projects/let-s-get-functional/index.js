@@ -3,7 +3,7 @@
 'use strict';
 
 var customers = require('./data/customers.json');
-var _ = require(/* Replace this with the name of your lodown! */);
+var _ = require("underbar");
 
 /**
  * 1. Import your lodown module using the require() method,
@@ -16,20 +16,62 @@ var _ = require(/* Replace this with the name of your lodown! */);
  *
  * 4. To test your work, run the following command in your terminal:
  *
- *    npm start --prefix ./<YOUR_GITHUB_FOLDER/projects/let-s-get-functional
+ *    npm start --prefix ./logan-hochwald.github.io/projects/let-s-get-functional
  *
- *    IMPORTANT: Make sure you replace <YOUR_GITHUB_FOLDER with your actual github folder name that is in your workspace.
  */
+
+
+//This project is a lot like underpants and you'll be using the functions that you were working with in underpants
+
+//No index file to preview if you're right or wrong, so run line 19 to see if you're passing. Make sure you do this:
+
+//To back up a directory, type cd ..
+
+//Make sure you're backed up until you hit the gitpod /workspace $
+
+//Then copy code above and paste/press enter so that it runs through the tests
 
 var maleCount = function(array) {
 
+    let males = _.filter(array, function (customer){
+        return customer.gender === "male";
+    });
+
+    return males.length;
 };
 
-var femaleCount;
+var femaleCount = function(array) {
 
-var oldestCustomer;
+let females = _.reduce(array, function(accumulator, current, index){
+    //accumulator = 0 | current = {gender: ??? }
 
-var youngestCustomer;
+    //determine if current customer is female
+    if (current.gender === "female") {
+        accumulator += 1; //accumulator = accumulator + 1
+    }
+
+    return accumulator;
+}, 0);
+
+    return females;
+
+};
+
+/*
+//Invoke reduce
+    //If seed value is given to us, result is assigned to the seed
+    //For-loop:
+        //0
+            //result = func{currentResult, currentItem, currentIndex}
+
+//Returned is the result value
+
+
+*/
+
+var oldestCustomer; //reduce //use the reduce method with NO seed
+
+var youngestCustomer; //reduce //use the reduce method with NO seed
 
 var averageBalance;
 
