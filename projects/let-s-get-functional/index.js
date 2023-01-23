@@ -217,18 +217,26 @@ var topThreeTags;
 var genderCount = function (array) {
 
     let returnObject = {};
+    //Returning an object telling the user what the gender count is
     returnObject.male = maleCount;
-    returnObject.female = femaleCount
+    //Property being made that stores the value of the function created earlier from maleCount
+    returnObject.female = femaleCount;
+    //Property being made that stores the value of the function created earlier from femaleCount
     var nbCount = function(array) {
       let nbs = _.filter(array, function (customer) {
         return customer.gender === "non-binary";
+        //Creating an array that stores the gender when it's non-binary
       })
       var nbsResult = nbs.length;
+      //That array length is stored in the variable
       return nbsResult;
+      //The variable is returned
     }
     returnObject["non-binary"] = nbCount;
+    //Property being made that stores the value of the function created earlier from nbCount
   
     return returnObject;
+    //Returning the now modified object
   
     
   };
