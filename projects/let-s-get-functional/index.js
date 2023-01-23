@@ -172,7 +172,35 @@ var firstLetterCount = function (array, letter) {
     
   };
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function (array, customer, letter) {
+
+    let customerArray = _.filter(array, function(item) {
+        if(item["name"] === customer) {
+          return true;
+        }
+      return false;
+    });
+  
+    let friendsDataArray = customerArray[0]["friends"];
+  
+    let friendsNames = _.pluck(friendsDataArray, "name");
+  
+    friendsNames = _.filter(friendsNames, function(item) {
+          //Filtering through the new array, if function returns truthy then it stores the array value into a new array
+       
+       if (item[0].toUpperCase() === letter.toUpperCase()) {
+          //If the first letter that is capitalized is the same as the letter that is capitalized
+         return true;
+         //Return true
+       }
+       return false;
+       //Returns false and does not store this array value
+     } )
+    
+      return friendsNames.length;
+  
+    
+  };
 
 var friendsCount;
 
