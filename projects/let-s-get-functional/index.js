@@ -119,26 +119,58 @@ _.reduce(array, function(accumulator, current) {
 }; 
 
 var averageBalance = function (array) {
+
     let average = 0;
+    //Initializing variable that stores the average of the balances
+
      let balanceArray = _.pluck(array, "balance");
+     //Taking all of the properties that say "balance" and storing them into a new array
   
     balanceArray = _.map(balanceArray, function (item) {
       item = item.replace(",", "");
+      //Replacing the commas with nothing so that they don't interfere with the number addition
       item = item.slice(1);
+      //Removing the dollar sign in front of them
       item = Number(item);
+      //Converting the string to a number
+
       return item;
+      //Returning the now modified item which is being stored into a new string
     })
   
     for (let i = 0; i < balanceArray.length; i++) {
+        //Iterating through the array containing the numbers as balances
       average += balanceArray[i];
+      //Adding all of the numbers together
     }
     
     return average = average / balanceArray.length;
+    //Returning the actual average
   
     
   };
 
-var firstLetterCount;
+var firstLetterCount = function (array, letter) {
+
+    let nameArray = _.pluck(array, "name");
+    //Creating new array containing only array data containing names
+
+    nameArray = _.filter(nameArray, function(item) {
+        //Filtering through the new array, if function returns truthy then it stores the array value into a new array
+     
+     if (item[0].toUpperCase() === letter.toUpperCase()) {
+        //If the first letter that is capitalized is the same as the letter that is capitalized
+       return true;
+       //Return true
+     }
+     return false;
+     //Returns false and does not store this array value
+   } )
+  
+    return nameArray.length;
+    //Returns the length of the nameArray, or how many names begin with that letter
+    
+  };
 
 var friendFirstLetterCount;
 
