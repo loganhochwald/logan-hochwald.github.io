@@ -54,8 +54,9 @@ let females = _.reduce(array, function(accumulator, current, index){
     }
     return accumulator;
 }, 0);
-    var femalesResult = females;
-    return femalesResult;
+  
+    return females;
+    //Return the number of females
 
 };
 
@@ -212,33 +213,76 @@ var friendFirstLetterCount = function (array, customer, letter) {
 
 var friendsCount;
 
-var topThreeTags;
+var topThreeTags = function (array) {
+  let arrayOfTagsArray = _.pluck(array, "tags");
+  //Filling array with the tags property
+  let arrayCombinedTags = _.reduce(arrayOfTagsArray, function(accumulator, current) {
+    return accumulator.concat(current);
+  })
+  //Combining the arrays into one array so that it may be iterated through
+
+  let objectOfThings = {};
+  //Object that stores the frequency of array items as a key/value pair
+
+  _.map(arrayCombinedTags, function(item) {
+    if (!objectOfThings.hasOwnProperty(item)) {
+      //If the object doesn't have the key, then the value is 0
+      return objectOfThings[item] = 0;
+    }
+    return objectOfThings[item]++;
+    //If it does have the key, add 1 to the value in the key
+  })
+  
+  
+  let mostCommonArray = [];
+  //Array to store the most common tags
+  for (var key in objectOfThings) {
+    //Iterating through the object containing the frequency of each tag
+    if (objectOfThings[key] > 1) {
+      //If it's more common than 1
+      mostCommonArray.push(key);
+      //Push that key to the array
+    }
+  }
+  return mostCommonArray;
+  //Return the array containing the top three items
+
+};
 
 var genderCount = function (array) {
 
-    let returnObject = {};
-    //Returning an object telling the user what the gender count is
-    returnObject.male = maleCount;
-    //Property being made that stores the value of the function created earlier from maleCount
-    returnObject.female = femaleCount;
-    //Property being made that stores the value of the function created earlier from femaleCount
-    var nbCount = function(array) {
-      let nbs = _.filter(array, function (customer) {
-        return customer.gender === "non-binary";
-        //Creating an array that stores the gender when it's non-binary
-      })
-      var nbsResult = nbs.length;
-      //That array length is stored in the variable
-      return nbsResult;
-      //The variable is returned
-    }
-    returnObject["non-binary"] = nbCount;
-    //Property being made that stores the value of the function created earlier from nbCount
-  
-    return returnObject;
-    //Returning the now modified object
-  
+  let malesArray = [];
+  let femalesArray = [];
+  let nbsArray = [];
+  //Declaring an array for each gender
+
+  _.map(array, function(customer) {
+    //Running through the entire array
     
+    if (customer.gender === "male") {
+      malesArray.push(customer.gender);
+      //If the key value is male, push that value into malesArray
+    } else if (customer.gender === "female") {
+      femalesArray.push(customer.gender);
+      //If the key value is female, push that value into femalesArray
+    } else if (customer.gender === "non-binary") {
+      nbsArray.push(customer.gender);
+      //If the key value is nb, push that value into nbsArray
+    }
+    else return false;
+    //Otherwise don't push anything
+
+  });
+  let objectOfData = {};
+  //Declaring empty object to be written over
+
+  objectOfData["male"] = malesArray.length;
+  objectOfData["female"] = femalesArray.length;
+  objectOfData["non-binary"] = nbsArray.length;
+  //Setting key/value pairs as the gender: length of array
+
+  return objectOfData;
+  //Returning the now modified object
   };
 
 //////////////////////////////////////////////////////////////////////
