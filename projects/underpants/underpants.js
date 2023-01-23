@@ -482,17 +482,14 @@ _.map = function (aCollection, aFunction) {
 */
 
 _.pluck = function (arrayOfObjects, property) {
-
-    let newArray = [];
-    //Defining empty array
+    
+    let returningArray = _.map(arrayOfObjects, function(item){
+        //Declaring variable to equal map, which is analyzing the arrayOfObjects and it is being called item by the function
+        return item[property];
+        //The function returns the data inside of the item's specified property
+    }) 
    
-    for(let i = 0; i < arrayOfObjects.length; i++) {
-        //Running through the array
-        newArray.push(Object.values(arrayOfObjects[i])[0]);
-        //Pushing the first proprty (using [0]) of the object located in the current array index into newArray
-    }
-
-    return newArray;
+    return returningArray;
     //Returning the now modified array
 
 }

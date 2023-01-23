@@ -396,7 +396,7 @@ module.exports.some = some;
 /**
  * reduce: Calls the function through every element of the array by passing the previous result, element, and index.
  * The return value of the function is the result, and once the iteration is complete, the function returns the number
- * stored inside of value. If seed is not given as an argument, then the element within the first index of the array is 
+ * stored inside of that value. If seed is not given as an argument, then the element within the first index of the array is 
  * to be used for the inital value of seed and result.
  * 
  * @param { Array } array: Function takes in an array to be iterated through.

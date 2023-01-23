@@ -34,10 +34,13 @@ var _ = require("underbar");
 var maleCount = function(array) {
 
     let males = _.filter(array, function (customer){
+    
         return customer.gender === "male";
+        //Returning the gender of the customer as male if the analyzed customer parameter is male into males variable
     });
 
     return males.length;
+    //Returning the length of the males variable
 };
 
 var femaleCount = function(array) {
@@ -49,7 +52,6 @@ let females = _.reduce(array, function(accumulator, current, index){
     if (current.gender === "female") {
         accumulator += 1; //accumulator = accumulator + 1
     }
-
     return accumulator;
 }, 0);
 
@@ -69,11 +71,72 @@ let females = _.reduce(array, function(accumulator, current, index){
 
 */
 
-var oldestCustomer; //reduce //use the reduce method with NO seed
+var oldestCustomer = function(array) {
 
-var youngestCustomer; //reduce //use the reduce method with NO seed
+let nameOfOldest = "";
+//Initializing variable to be filled with the name of the oldest customer
 
-var averageBalance;
+_.reduce(array, function(accumulator, current) {
+    //Calling reduce function
+
+    if (current.age > accumulator) {
+        //If the current array's age is greater than the value of accumulator
+        accumulator = current.age;
+        //Accumulator becomes the age that is the oldest, is written over if the oldest age changes
+        nameOfOldest = current.name;
+        //The name of the person with the age in accumulator is stored here but written over if accumulator changes
+    }
+    return accumulator;
+    //Reduce returns the value of the oldest age
+
+}, 0);
+    return nameOfOldest;
+    //The main function returns the name of the oldest person
+
+}; 
+
+var youngestCustomer = function(array) {
+    let storeYoungestName = "";
+    //Empty variable to store the name of the youngest person
+
+_.reduce(array, function(accumulator, current) {
+
+   if(current.age <= accumulator) {
+    //If the current age is less than or equal to the accumulator's current stored age (previous age)
+    storeYoungestName = current.name;
+    //The name of the current person is stored into this variable
+   }
+
+   return current.age;
+   //To be used in the accumulator to compare next time
+
+}, array[0]["age"]);
+//Value of accumulator starts at the zero index, not defaulted first
+    
+    return storeYoungestName;
+    //Returns the variable that is storing the string of the youngest name
+
+}; 
+
+var averageBalance = function (array) {
+    let average = 0;
+     let balanceArray = _.pluck(array, "balance");
+  
+    balanceArray = _.map(balanceArray, function (item) {
+      item = item.replace(",", "");
+      item = item.slice(1);
+      item = Number(item);
+      return item;
+    })
+  
+    for (let i = 0; i < balanceArray.length; i++) {
+      average += balanceArray[i];
+    }
+    
+    return average = average / balanceArray.length;
+  
+    
+  };
 
 var firstLetterCount;
 
