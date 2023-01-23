@@ -73,7 +73,7 @@ module.exports.typeOf = typeOf;
 /**
  * first: Designed to take in an array and number; returns an array depending on the inputted values. If
  * array is not an array or number is negative, return an empty array. If number is either not given or 
- * not a number, return the first element of the array argument. If number is greater than arrau length, 
+ * not a number, return the first element of the array argument. If number is greater than array length, 
  * return the array. Otherwise, return the first number of items in the array. 
  * 
  * @param { Array } array: Function takes in an array to be modified by the number argument (if inputted).

@@ -38,8 +38,8 @@ var maleCount = function(array) {
         return customer.gender === "male";
         //Returning the gender of the customer as male if the analyzed customer parameter is male into males variable
     });
-
-    return males.length;
+    var malesResult = males.length;
+    return malesResult;
     //Returning the length of the males variable
 };
 
@@ -54,8 +54,8 @@ let females = _.reduce(array, function(accumulator, current, index){
     }
     return accumulator;
 }, 0);
-
-    return females;
+    var femalesResult = females;
+    return femalesResult;
 
 };
 
@@ -175,15 +175,22 @@ var firstLetterCount = function (array, letter) {
 var friendFirstLetterCount = function (array, customer, letter) {
 
     let customerArray = _.filter(array, function(item) {
+        //Filtering the array into a new array called customerArray
+
         if(item["name"] === customer) {
+            //If the property "name" is the same as customer
           return true;
+          //Return true and store it into the customerArray
         }
       return false;
+      //Return false and doesn't store it into the array
     });
   
     let friendsDataArray = customerArray[0]["friends"];
+    //The friends data is stored into this array by grabbing their info from the customer's object information at the friends property
   
     let friendsNames = _.pluck(friendsDataArray, "name");
+    //Another array is made, this time taking the names under the name property
   
     friendsNames = _.filter(friendsNames, function(item) {
           //Filtering through the new array, if function returns truthy then it stores the array value into a new array
@@ -198,6 +205,7 @@ var friendFirstLetterCount = function (array, customer, letter) {
      } )
     
       return friendsNames.length;
+      //Returning the length of the array, which is also counting how many names start with that letter
   
     
   };
@@ -206,7 +214,24 @@ var friendsCount;
 
 var topThreeTags;
 
-var genderCount;
+var genderCount = function (array) {
+
+    let returnObject = {};
+    returnObject.male = maleCount;
+    returnObject.female = femaleCount
+    var nbCount = function(array) {
+      let nbs = _.filter(array, function (customer) {
+        return customer.gender === "non-binary";
+      })
+      var nbsResult = nbs.length;
+      return nbsResult;
+    }
+    returnObject["non-binary"] = nbCount;
+  
+    return returnObject;
+  
+    
+  };
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
