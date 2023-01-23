@@ -31,21 +31,26 @@ var _ = require("underbar");
 
 //Then copy code above and paste/press enter so that it runs through the tests
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 var maleCount = function(array) {
 
     let males = _.filter(array, function (customer){
+      //Filtering through the array argument, each index is called customer
     
         return customer.gender === "male";
-        //Returning the gender of the customer as male if the analyzed customer parameter is male into males variable
+        //Returning the gender of the customer as male if the analyzed customer parameter is "male" string into males variable
     });
-    var malesResult = males.length;
-    return malesResult;
-    //Returning the length of the males variable
+    
+    return males.length;
+    //Returning the length of the males array to signify how many males there are
 };
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var femaleCount = function(array) {
 
-let females = _.reduce(array, function(accumulator, current, index){
+let females = _.reduce(array, function(accumulator, current){
     //accumulator = 0 | current = {gender: ??? }
 
     //determine if current customer is female
@@ -53,24 +58,14 @@ let females = _.reduce(array, function(accumulator, current, index){
         accumulator += 1; //accumulator = accumulator + 1
     }
     return accumulator;
+    //Returns the potentially modified value of accumulator to be compared next iteration
 }, 0);
   
     return females;
-    //Return the number of females
-
+    //Return the number of females (the final value of accumulator)
 };
 
-/*
-//Invoke reduce
-    //If seed value is given to us, result is assigned to the seed
-    //For-loop:
-        //0
-            //result = func{currentResult, currentItem, currentIndex}
-
-//Returned is the result value
-
-
-*/
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var oldestCustomer = function(array) {
 
@@ -96,6 +91,8 @@ _.reduce(array, function(accumulator, current) {
 
 }; 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 var youngestCustomer = function(array) {
     let storeYoungestName = "";
     //Empty variable to store the name of the youngest person
@@ -112,12 +109,14 @@ _.reduce(array, function(accumulator, current) {
    //To be used in the accumulator to compare next time
 
 }, array[0]["age"]);
-//Value of accumulator starts at the zero index, not defaulted first
+//Value of accumulator starts at the zero index of age so we aren't comparing to the first index which would be an entire customer
     
     return storeYoungestName;
     //Returns the variable that is storing the string of the youngest name
 
 }; 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var averageBalance = function (array) {
 
@@ -148,8 +147,9 @@ var averageBalance = function (array) {
     return average = average / balanceArray.length;
     //Returning the actual average
   
-    
   };
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var firstLetterCount = function (array, letter) {
 
@@ -172,6 +172,8 @@ var firstLetterCount = function (array, letter) {
     //Returns the length of the nameArray, or how many names begin with that letter
     
   };
+
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var friendFirstLetterCount = function (array, customer, letter) {
 
@@ -208,46 +210,72 @@ var friendFirstLetterCount = function (array, customer, letter) {
       return friendsNames.length;
       //Returning the length of the array, which is also counting how many names start with that letter
   
-    
   };
 
-var friendsCount;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var friendsCount = function(array,name) {
+  let customerNames = [];
+  //Initializing array to store the customer names that contain the name argument within their friends list
+
+  for(let i = 0; i < array.length; i++) {
+    //Iterating through the array argument
+    for(let j = 0; j < array[i]["friends"].length; j++) {
+      //Iterating through the length of the friends array in each object of the array
+      if(array[i]["friends"][j]["name"] === name) {
+        //If the friend name is equal to the name argument
+      customerNames.push(array[i]["name"]);
+      //Push the name of the customer into the customerNames array (not the friend name)
+    }
+    }
+    
+  }
+  return customerNames;
+  //Return the now modified customerNames array
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var topThreeTags = function (array) {
+
   let arrayOfTagsArray = _.pluck(array, "tags");
   //Filling array with the tags property
+
   let arrayCombinedTags = _.reduce(arrayOfTagsArray, function(accumulator, current) {
     return accumulator.concat(current);
+    //Combines the array in the accumulator to the current array using .concat
   })
-  //Combining the arrays into one array so that it may be iterated through
+  //Creating one array so that it may be iterated through
 
   let objectOfThings = {};
-  //Object that stores the frequency of array items as a key/value pair
+  //Object that stores the name and frequency of array item as a key/value pair
 
   _.map(arrayCombinedTags, function(item) {
     if (!objectOfThings.hasOwnProperty(item)) {
-      //If the object doesn't have the key, then the value is 0
-      return objectOfThings[item] = 0;
+      //If the object doesn't have the array item as a key name, then the key of that array name is created and value is set to 1
+      return objectOfThings[item] = 1;
     }
     return objectOfThings[item]++;
-    //If it does have the key, add 1 to the value in the key
+    //If it does have the array value as a key in the object, add 1 to the value (should be 2 or more)
   })
-  
   
   let mostCommonArray = [];
   //Array to store the most common tags
+
   for (var key in objectOfThings) {
-    //Iterating through the object containing the frequency of each tag
-    if (objectOfThings[key] > 1) {
-      //If it's more common than 1
+    //Iterating through the object containing the name and frequency of each tag
+    if (objectOfThings[key] > 2) {
+      //If the value of the key is greater than 2
       mostCommonArray.push(key);
-      //Push that key to the array
+      //Push that key name to the array that stores the most common names
     }
   }
   return mostCommonArray;
-  //Return the array containing the top three items
+  //Return the array containing the top three tags
 
 };
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var genderCount = function (array) {
 
