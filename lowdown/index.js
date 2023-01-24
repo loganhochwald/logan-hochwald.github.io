@@ -25,23 +25,22 @@ module.exports.each = each;
 
 
 /**
- * identity: Designed to return the input value unchanged
+ * identity: Designed to return the argument value unchanged.
  * 
- * @param { Any Value } value: Function takes in any value that is to be returned unchanged.
- * @return { Any value }: Function returns input value unchanged.
+ * @param { Any Value } value: Function takes in any value as the argument.
+ * @return { Any value }: Function returns argument value unchanged.
  */
 
 function identity(value) {
     return value;
 };
-
 module.exports.identity = identity;
 
 
 /**
- * typeOf: Designed to determine the input value type using if/else statements and returns the input value type as a string
+ * typeOf: Designed to determine the argument type using if/else statements; returns the type as a string
  * 
- * @param { Any value } value: Function takes in any value to be tested in if/else statements.
+ * @param { Any value } value: Function takes in any value to be compared against if/else statements.
  * @return { String }: Function returns a string defining the input value type.
  */
 
@@ -66,13 +65,12 @@ function typeOf (value) {
         return "function";
     }
 }
-
 module.exports.typeOf = typeOf;
 
 
 /**
- * first: Designed to take in an array and number; returns an array depending on the inputted values. If
- * array is not an array or number is negative, return an empty array. If number is either not given or 
+ * first: Designed to take an array and number, returns an array depending on the value of the arguments: if
+ * array is not an array or number is negative, returns an empty array. If number is either not given or 
  * not a number, return the first element of the array argument. If number is greater than array length, 
  * return the array. Otherwise, return the first number of items in the array. 
  * 
@@ -80,6 +78,7 @@ module.exports.typeOf = typeOf;
  * @param { Number } number: Function takes in a number to be used to modify the array argument.
  * @return { Array }: Function returns an array depending on array and number arguments.
  */
+
 function first (array, number) {
 
     if(number === undefined) {
@@ -96,8 +95,8 @@ function first (array, number) {
     }
     return array.slice(0, number);
 }
-
 module.exports.first = first;
+
 
 /**
  * last: Designed to take in an array and number; returns an array depending on the inputted values. If
@@ -109,6 +108,7 @@ module.exports.first = first;
  * @param { Number } number: Function takes in a number to be used to modify the array argument.
  * @return { Array }: Function returns an array depending on array and number arguments.
  */
+
 function last (array, number) {
 
     if(number === undefined) {
@@ -125,10 +125,8 @@ function last (array, number) {
     }
     return array.slice(number - 1);
 }
-
-
-
 module.exports.last = last;
+
 
 /**
  * indexOf: Designed to iterate through the array argument and compare each element to the value argument.
@@ -139,6 +137,7 @@ module.exports.last = last;
  * @param { Value } value: Function takes in a value to compare to each array element.
  * @return { Number }: Function returns a number or strictly -1 depending on array and value arguments.
  */
+
 function indexOf (array, value) {
     for (var i = 0; i < array.length; i++) {
         if (array[i] === value) {
@@ -147,9 +146,8 @@ function indexOf (array, value) {
     }
     return -1;
 }
-
-
 module.exports.indexOf = indexOf;
+
 
 /**
  * contains: Designed to iterate through the array argument and adds 1 to the value of a counter whenever value matches
@@ -157,9 +155,10 @@ module.exports.indexOf = indexOf;
  * is returned. If there is no match, then false is returned. IndexOf() may not be used in this function.
  * 
  * @param { Array } array: Function takes in an array to be iterated through and compared to value.
- * @param { Value } value: Function takes in a value to compare to the array elements.
- * @return { Boolean }: Function returns true or false depending on array and value arguments.
+ * @param { Any Value } value: Function takes in a value to compare to the array elements.
+ * @return { Boolean }: Function returns true or false depending on comparison of array and value arguments.
  */
+
 function contains (array, value) {
     let isTrue = 0;
     for (var i = 0; i < array.length; i++) {
@@ -172,15 +171,13 @@ function contains (array, value) {
     }
     return false;
 }
-
-
 module.exports.contains = contains;
+
 
 /**
  * unique: Designed to loop through the array argument and remove the duplicates. The array elements are 
- * pushed into a locally created array, but if the same value is located within the local array, then
- * the value is not pushed into it. The function returns the locally created array that contains the array
- * argument elements without the duplicates.
+ * pushed into a locally created array unless the same value is located within the local array already. 
+ * The function returns the locally created array that contains the array elements without duplicates.
  * 
  * @param { Array } array: Function takes in an array to be iterated through and duplicates deleted.
  * @return { Array }: Function returns a locally created array that contains the array argument with no duplicates.
@@ -194,9 +191,8 @@ function unique (array) {
     }
     return noDuplicatesArray;
 }
-
-
 module.exports.unique = unique;
+
 
 /**
  * filter: Designed to take an array and function, iterate through the array, and for every array index call the
@@ -208,6 +204,7 @@ module.exports.unique = unique;
  * @return { Array }: Function returns a locally created array containing array values that produce truthy from the 
  * function argument.
  */
+
 function filter (array, aFunction) {
     let newArray = [];    
     for (let i = 0; i < array.length; i++) {
@@ -217,9 +214,8 @@ function filter (array, aFunction) {
     }
     return newArray;
 }
-
-
 module.exports.filter = filter;
+
 
 /**
  * reject: Designed to take an array and function, iterate through the array, and for every array index call the
@@ -240,9 +236,8 @@ function reject (array, aFunction) {
     }
     return newArray;
 }
-
-
 module.exports.reject = reject;
+
 
 /**
  * partition: Designed to take an array and function, iterate through the array, and for every array index call the
@@ -255,6 +250,7 @@ module.exports.reject = reject;
  * @param { Function } aFunction: Has array values passed through it and returns boolean values.
  * @return { Array }: Function returns a locally created nested array containing the local truthy array and falsey arrays.
  */
+
 function partition (array, aFunction) {
     let newArray = [];
     let truthyArray = [];
@@ -269,7 +265,6 @@ function partition (array, aFunction) {
     newArray.push(truthyArray, falseyArray);
     return newArray;
 }
-
 module.exports.partition = partition;
 
 
@@ -280,8 +275,8 @@ module.exports.partition = partition;
  * pushes the results into a locally created array. Once the collection has been completely iterated through,
  * the locally created array is returned.
  * 
- * @param { Function } aFunction: Function takes in different elements of the array argument.
  * @param { Array or Object } aCollection: The collection over which to iterate.
+ * @param { Function } aFunction: Function takes in different elements of the array argument.
  * @return { Array }: Function returns a locally created array.
  */
 function map (aCollection, aFunction) {
@@ -297,29 +292,27 @@ function map (aCollection, aFunction) {
     }
     return newArray;
 }
-
 module.exports.map = map;
 
 
-
 /**
- * pluck: Designed to iterate through an array of objects and the values of the objects in the arrays are pushed
- * into a locally created array if they match the property. The local array is returned once the iteration is complete.
+ * pluck: Designed to iterate through an array of objects using the map() function, and the values of the 
+ * objects in the arrays are pushed into a locally created array if they match the property. The local array 
+ * is returned once the iterations are complete.
  * 
  * @param { Array } arrayOfObjects: An array containing objects for the elements, to be iterated through.
  * @param { String } property: The string is compared to the object properties in each array element.
  * @return { Array }: Function returns a locally created array containing the value of property in each element of array.
  */
+
 function pluck (arrayOfObjects, property) {
-    let newArray = [];
-    for(let i = 0; i < arrayOfObjects.length; i++) {
-        newArray.push(Object.values(arrayOfObjects[i])[0]);
-    }
-    return newArray;
+    let returningArray = map(arrayOfObjects, function(item) {
+        return item[property];
+      })
+      return returningArray;
 }
-
-
 module.exports.pluck = pluck;
+
 
 /**
  * every: Designed to iterate through a collection and call a function on every element. If return value of every element is
@@ -330,6 +323,7 @@ module.exports.pluck = pluck;
  * @param { Function } func: Function takes in different elements of the collection and returns a boolean value.
  * @return { Boolean }: Function returns true or false.
  */
+
 function every (collection, func) {
     if (Array.isArray(collection)) {
         if (func === undefined) {
@@ -345,14 +339,12 @@ function every (collection, func) {
                 }
             }
         }
-
     } else { 
     }
     return true;
 }
-
-
 module.exports.every = every;
+
 
 /**
  * some: Calls the function on every parameter of the collection, if the return value is true for at least one element, return
@@ -363,8 +355,8 @@ module.exports.every = every;
  * @param { Function } aFunction: Function that passes the parameters of the collection and returns a boolean value.
  * @return { Boolean }: The function returns true or false depending on the result of the function or collection values.
  */
-function some (aCollection, aFunction) {
 
+function some (aCollection, aFunction) {
     if (!aFunction) {
         for (let i in aCollection) {
             if (aCollection[i] === true) {
@@ -389,9 +381,8 @@ function some (aCollection, aFunction) {
     }
     return false;
 }
-
-
 module.exports.some = some;
+
 
 /**
  * reduce: Calls the function through every element of the array by passing the previous result, element, and index.
@@ -404,6 +395,7 @@ module.exports.some = some;
  * @param { Number } seed: The seed value, which is optional.
  * @return { Number }: The function returns the value stored in result.
  */
+
 function reduce (array, func, seed) {
     let result;
     if (seed === undefined) {
@@ -419,14 +411,14 @@ function reduce (array, func, seed) {
     }
     return result;
 }
-
-
 module.exports.reduce = reduce;
 
+
 /**
- * extend: 
+ * extend: Takes as many objects as inserted as arguments into the function call and combines the objects into one. 
+ * Function returns only one object that contains all the data from the inputted objects.
  * 
- * @return { Object }: 
+ * @return { Object }: Returns the zero array index containing the modified object.
  */
 function extend () {
     let allArguments = Array.from(arguments);
@@ -434,8 +426,7 @@ function extend () {
         Object.assign(allArguments[0], allArguments[i]);
     }
     return allArguments[0];
-
 }
-
-
 module.exports.extend = extend;
+
+//ALL DONE//
