@@ -213,19 +213,19 @@ function deepEqual(value1, value2) {
     //Return false
   }
 
-  let keysValue1 = Object.keys(value1); 
-  let keysValue2 = Object.keys(value2);
+  let value1Key = Object.keys(value1); 
+  let value2Key = Object.keys(value2);
   //Assigning new variables to the keys of the objects
 
-  if (keysValue1.length != keysValue2.length) {
+  if (value1Key.length != value2Key.length) {
     //If the length isn't the same, this means they don't have the exact same keys
   return false;
   //Return false
   }
 
-  for (let key of keysValue1) {
+  for (let key of value1Key) {
     //Iterating through the keys of value1 object
-    if (!keysValue2.includes(key) || !deepEqual(value1[key], value2[key])) {
+    if (!value2Key.includes(key) || !deepEqual(value1[key], value2[key])) {
       //If value2 key's don't include the key of value1 or the data in the key (comparing potential nested array/object access)
       return false;
       //Return false
