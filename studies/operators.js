@@ -1,0 +1,1 @@
+//assignment operators, arithmetic operators, comparision, logical, unary (!, typeOf, -), ternary (a ? b : c)
