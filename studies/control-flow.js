@@ -1,7 +1,8 @@
 /**
  * CONTROL FLOW: 
- * 0. INTRO FOR CONTROL FLOW
- * 
+ * 0. The control flow is the order in which code is run, which is from top to bottom, unless conditional structures are
+ * written; they alter the order in which code is executed if the specified conditions are met. Conditional structures include
+ * if, else, else-if, and switch statements.
  * 1. The if statement conditionally executes a block of code if a specified condition is true; the block of code will not 
  * run if this condition is not met. 
  * 2. The else statement is specified to be executed if the condition within the if statement is false. If the condition is true,
@@ -19,7 +20,6 @@
 if (1 === 1) {
     return true;
 }
-
 
 // 2. Else Statement //
 //The time of day is not in the morning, so the condition is false and the else statement will run. The user will be informed
@@ -43,7 +43,6 @@ if (4 !== 4) {
 } else {
     console.log("This shouldn't be hit.");
 }
-
 
 // 4. Switch Statement //
 //The evaluate variable is being compared to the case values, if they match, then the letKnown variable is updated with a new 
