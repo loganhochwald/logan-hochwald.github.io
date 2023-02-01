@@ -1,7 +1,3 @@
-//number, string, boolean, array, object, function, undefined, null, NaN, infinity and -inifinity, difference between
-//primitive/simple and complex data types, primitive values passed to a function by copy and complex values are by reference
-//what does that mean and how are they different
-
 /**
  * DATA TYPES:
  * 0. Data types store specific kinds of data within them that can be manipulated by the program. They exist in three categories:
@@ -54,3 +50,85 @@
  * is mutated. By copy takes up more room and time because the value stored within in is copied into another variable, and 
  * whatever happens to the value within this new variable does not affect the original place that the value was.
  */
+
+// 1. Number
+//Declaring and initializing a number
+
+var thisIsANumber = 27;
+
+// 2. String
+//Declaring and Initializing a String
+
+var thisIsAString = "Hello, You.";
+
+// 3. Boolean
+//Declaring and Initializing a Boolean Value
+
+var thisIsABoolean = true;
+
+// 4. Array
+//Declaring and Initializing an Array
+
+var thisIsAnArray = ["String", 24, true, ["This", "is", "an", "array", "inside"], {whatIsThis: "an object"}];
+
+// 5. Object
+//Declaring and Initializing an Object
+
+var thisIsAnObject = {
+    key1: "This is the first key value pair",
+    key2: 24,
+    key3: true
+};
+
+// 6. Function
+//Declaring and Initializing a Function that Logs the Arguments to the Console
+
+function thisIsMyFunction(parameter1, parameter2) {
+    console.log(parameter1, parameter2);
+}
+
+// 7. Undefined
+//Asking a function to print an undefined variable results in undefined
+
+var notDefined;
+
+function printUndefined (notDefined) {
+    return notDefined;
+}
+
+// 8. Null
+//Declaring and Initializing a variable will a null value then adding it to a number
+
+var thisIsANull = null;
+
+var anotherNumber = 9;
+
+var theResultOfAdding = thisIsANull + anotherNumber;
+console.log(theResultOfAdding); //prints 9
+
+// 9. NaN
+//Logging a string minus a number results in NaN
+
+console.log("cookie monster" - 10); //prints NaN
+
+// 10. Infinity/-Infinity
+//The result is infinity for the first statement, negative infinity for the second
+
+console.log(1 / 0); //prints Infinity
+console.log(Math.log(0)); //prints -Infinity
+
+// 11. Primitive vs. Complex
+//Showing a simple data type declaration and initialization vs. a complex one
+
+var simple = "I'm simple because I'm a string!";
+var complex = ["I'm", 2, true];
+
+// 12. By Copy vs. By Reference
+//The first one is by copy because we are getting the third index of a string. The second is reference because we
+//are getting the first index of an array.
+
+var byCopy = "by copy";
+console.log(byCopy[3]); //prints " "
+
+var byReference = [1, 2, 3];
+console.log(byReference[1]); //prints 2
