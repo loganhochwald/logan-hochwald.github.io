@@ -1,8 +1,3 @@
-//while, for, and for-in loops
-//Be able to loop any number of times, forward counting up to some limit, backward counting down to 0
-//Loop over an array, forwards and backwards
-//loop over an object
-
 /**
  * LOOPS:
  * 0. Loops perform a repeated code block based on a conditional statement that allows the loop to run as long as 
@@ -40,7 +35,7 @@ var counter = 0;
 
 while (counter < 2) {
     console.log(counter); //prints 0 1
-    counter ++;             
+    counter ++;             //Increments counter by 1     
 }
 
 // 2. Loop Forwards and Backwards
@@ -78,6 +73,6 @@ var loopingObject = {
 };
 
 for (var key in loopingObject) {
-    console.log(key);
-    console.log(loopingObject[key]);    //prints key1, "key1 value", key2, 2
+    console.log(key);                     //prints key1, key2
+    console.log(loopingObject[key]);    //prints "key1 value", 2
 }
