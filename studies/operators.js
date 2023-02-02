@@ -3,7 +3,9 @@
  * 0. Operators are used to manipulate a certain value, also known as an operand. These operands have arithmetic and logical 
  * computations performed on them by operators. There are multiple different types: assignment operators, arithmetic operators, 
  * comparison operators, and logical operators. Each have a different function, but they all are used to manipulate and apply
- * value to variables. 
+ * value to variables. They act on the data by assigning, comparing, or including them in arithmatic. These classifications are
+ * assigned by what they do and how many operands are required. If only one, then it is a unary operator, two is a binary operator,
+ * and any more is a ternary operator.
  * 1. Assignment operators assign values to variables, where the left side has the variable, then the operators, then everything 
  * on the right is the value in which the variable is being assigned. There is a simple type, which requires the variable and value
  * to be the same type with a = in between them, and compound, which has arithmetic symbols such as += attached to it. These perform
