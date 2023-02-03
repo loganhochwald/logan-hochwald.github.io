@@ -11,7 +11,7 @@
  * 2. There are many methods in which strings can be manipulated, but the most common ones will be discussed here. One method is
  * the faster version of using operators for concatenation, which is the .conat() method. This combines multiple strings into one
  * and can be stored if set equal to a variable. Extracting string parts can be done with .slice(), .substring(), or .substr().
- * Slice  and substring take two arguments, the start and end position, which indicate which part of the string is needed. The 
+ * Slice and substring take two arguments, the start and end position, which indicate which part of the string is needed. The 
  * end position is not required and will take the rest of the string from the start position if left blank. The substr method takes
  * two arguments, the first being the first position to extract, and the other asking for the length of what is to be taken. The
  * replace() and replaceAll() methods takes two parameters, the first being the text that is to be replaced, and the other is what

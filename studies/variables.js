@@ -1,16 +1,12 @@
 /*
    * VARIABLES:
-   *
    * 0. To hold things in memory during the life-cycle of a program, we can use variables.  Variables
    * are named identifiers that can point to values of a particular type, like a Number, String,
    * Boolean, Array, Object or another data-type.  Variables are called so because once created, we
    * can CHANGE the value (and type of value) to which they point.
-   *
    * 1. To create a variable we use the keyword, var, followed by a name (id or alias) for our
    * variable.
-   *
    * 2. There are 2 phases of using variables: declaration and initialization (or assignment).
-   * 
    * 3. Hoisting is a process that the Javascript interpreter does where it hoists the declarations, assignment of variables,
    * and assignment of functions to the top of the scope before code execution. This means that the interpreter scans the code
    * and hoists variable and function declarations to the top of the code, and then the code is executed. Function declarations
@@ -48,7 +44,7 @@
   var numberOfCows = 8;
   var howManyCows = getCowNumber(numberOfCows);
   function getCowNumber(cow) {
-   return "This many cows: " + cow;
+   return "This many cows: " + cow; //Returns This many cows: 8
   }
 
   //Javascript interprets like this:
@@ -58,4 +54,4 @@
   var numberOfCows;
   var howManyCows
   numberOfCows = 8;
-  howManyCows = getCowNumber(numberOfCows);
+  howManyCows = getCowNumber(numberOfCows);  //Returns This many cows: 8

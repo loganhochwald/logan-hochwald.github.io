@@ -84,7 +84,7 @@ var thisIsAnObject = {
 //Declaring and Initializing a Function that Logs the Arguments to the Console
 
 function thisIsMyFunction(parameter1, parameter2) {
-    console.log(parameter1, parameter2);
+    console.log(parameter1, parameter2);        //Will print the arguments if they're passed
 }
 
 // 7. Undefined
@@ -93,7 +93,7 @@ function thisIsMyFunction(parameter1, parameter2) {
 var notDefined;
 
 function printUndefined (notDefined) {
-    return notDefined;
+    return notDefined;      //undefined
 }
 
 // 8. Null

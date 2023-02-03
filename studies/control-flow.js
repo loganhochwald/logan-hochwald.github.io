@@ -6,9 +6,9 @@
  * 1. The if statement conditionally executes a block of code if a specified condition is true; the block of code will not 
  * run if this condition is not met. 
  * 2. The else statement is specified to be executed if the condition within the if statement is false. If the condition is true,
- * then this block of code will not run.
- * 3. The else-if introduces a new condition that is tested if the conditions before it are false and that block of code is run if the condition
- * is met. This can be stacked for as many else-if statements that are needed.
+ * then this block of code will not run. It is observed by the interpreter once the if statement has been confirmed false.
+ * 3. The else-if introduces a new condition that is tested if the conditions before it are false and that block of code is run 
+ * if the condition is met. This can be stacked for as many else-if statements that are needed, ending with an else statement.
  * 4. Switch statements evaluate an expression's value to case values. If there is a match, the code block 
  * tied to the case is executed. Adding the keyword "break" at the end of the code block informs the switch statement
  * to be exited. Otherwise, the other code blocks are executed as well. If there are no matches, then an optional 
@@ -18,7 +18,7 @@
 // 1. If Statement //
 //True will be returned because the condition is true.
 if (1 === 1) {
-    return true;
+    return true;    //Returns true
 }
 
 // 2. Else Statement //
@@ -30,7 +30,7 @@ var time = 15;
 if (time < 12) {
     var message = "Good Morning!";
 } else {
-    var message = "It's Not the Morning!";
+    var message = "It's Not the Morning!";  //Message is equivalent to this string
 }
 
 // 3. Else-If Statement //
@@ -39,7 +39,7 @@ if (time < 12) {
 if (4 !== 4) {
     console.log("This isn't possible");
 } else if (4 === 4) {
-    console.log("This is definitely true.");
+    console.log("This is definitely true.");    //Prints This is definitely true
 } else {
     console.log("This shouldn't be hit.");
 }
@@ -58,7 +58,7 @@ switch (evaluate) {
         letKnown = "one";
         break;
     case 2:
-        letKnown = "two";
+        letKnown = "two";   //letKnown is assigned this string
         break;
     default:
         console.log("We don't have that number.");
