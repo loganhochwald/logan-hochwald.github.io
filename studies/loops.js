@@ -38,6 +38,15 @@ while (counter < 2) {
     counter ++;             //Increments counter by 1     
 }
 
+//For-loop breakdown
+
+for (let i = 0; i <= 2; i++) {
+    console.log("weeeeee"); //Prints weeeeeeweeeeeeweeeeee
+}
+//let i = 0 is the start statement
+//i <= 2 is the stop condition
+//i++ is the update statement
+
 // 2. Loop Forwards and Backwards
 //Until is initialized, the first loop is forwards and the second loop is backwards
 

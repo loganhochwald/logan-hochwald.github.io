@@ -14,6 +14,10 @@
    * so if the value of a var variable is called before it had been declared, then it would resolve to an undefined error. Similarly,
    * the let and const variables can't be accessed until they're defined but a reference error is thrown because they are not 
    * initialized as undefined.
+   * 4. Variable declarations have scopes depending on what keyword they use. The three options are var, let, and const. Var can
+   * be reassgined and is in both the local and global scopes. Let can be reassigned but is only in the block scope, meaning if
+   * it was delclared in a place not globally, it can't be accessed globally. Lastly, const can't be reassigned and is block scoped
+   * just as let is.
    */
 
   // 1. declaration //
@@ -41,6 +45,7 @@
   // 3. hoisting //
 
   //Written Code:
+  console.log(numberOfCows); //prints 8
   var numberOfCows = 8;
   var howManyCows = getCowNumber(numberOfCows);
   function getCowNumber(cow) {
@@ -55,3 +60,19 @@
   var howManyCows
   numberOfCows = 8;
   howManyCows = getCowNumber(numberOfCows);  //Returns This many cows: 8
+
+  // 4. Different Declarations //
+  //Var is globally accessed even if declared within a function
+  function itBeLikeThat() {
+   var yes = "It sure do";
+  }
+  console.log(yes); //Prints It sure do
+
+  //Let and const are block scoped
+
+  function letAndConst () {
+   let letVariable = 24;
+   const constVariable = 25;
+  }
+
+  console.log("You know what's funnier than " + letVariable + "?" + " It's " + constVariable); //ReferenceError

@@ -124,11 +124,15 @@ var simple = "I'm simple because I'm a string!";
 var complex = ["I'm", 2, true];
 
 // 12. By Copy vs. By Reference
-//The first one is by copy because we are getting the third index of a string. The second is reference because we
-//are getting the first index of an array.
 
-var byCopy = "by copy";
-console.log(byCopy[3]); //prints " "
+let byCopyOriginal = "by copy";
+let byCopy = byCopyOriginal;
+byCopyOriginal = "changed";
 
-var byReference = [1, 2, 3];
-console.log(byReference[1]); //prints 2
+console.log(byCopyOriginal); //prints "by copy"
+
+let byReferenceOriginal = [1, 2, 3];
+let byReference = byReferenceOriginal;
+byReference[0] = 45;
+
+console.log(byReferenceOriginal[0]); //prints 1

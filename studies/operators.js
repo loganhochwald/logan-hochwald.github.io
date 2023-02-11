@@ -31,22 +31,29 @@
 //The = sign is the assignment operator and the value of 24 is being applied to a variable that is a number type.
 
 var numberVariable = 24;
+numberVariable += numberVariable;   //Adds 24 to the value of 24 already in the variable
 
 // 2. Arithmetic Operator //
-//The + sign is the addition operator and is adding 25 and 25 so that the additionVariable stores a value of 50.
+//The + sign is the addition operator and is adding 25 and 25 so that the arithmetic stores a value of 50.
+//The other types are shown where arithmetic is being reassigned with every line.
 
-var additionVariable = 25 + 25;
+var arithmetic = 25 + 25;
+arithmetic = 100 - 25;
+arithmetic = 100 * 50;
+arithmetic = 100 / 2;
+arithmetic = 100 % 2;
 
 // 3. Logical Operator //
 // An if-statement is being created and can only run if both statements are true using the and operator &&
+//The or operator (||) is used to test the first expression or the second expression for truthy, and !== is testing if NOT strictly equal
 var loganPersonality1 = "cool";
 var loganPersonality2 = "awesome";
 
-if (loganPersonality1 === "cool" && loganPersonality2 === "awesome") {
+if ((loganPersonality1 === "cool" && loganPersonality2 === "awesome") || 2 + 2 !== 25) {
     console.log("Logan is obviously the coolest");
 } else {
     console.log("Logan is still the coolest, someone just didn't assign the variables correctly.");
-}   //prints "Logan is obviously the coolest" because both expressions are true
+}   //prints "Logan is obviously the coolest" because one or both of the expressions are true
 
 // 4. Unary Operator //
 //Initializing counter, then another variable of otherCounter has the value of an incremented counter, or 1
