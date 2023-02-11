@@ -447,20 +447,14 @@ _.map = function (aCollection, aFunction) {
     let newArray = [];
     //Delcaring empty array
 
-    if (Array.isArray(aCollection)) {
+    if (Array.isArray(aCollection) || typeof(aCollection) === "object") {
         //If aCollection is an array
         for (let i in aCollection) {
             //Iterating through aCollection
             newArray.push(aFunction(aCollection[i], i, aCollection));
             //Push the function call into newArray with the element, the index, and aCollection
         }
-    } else if (typeof(aCollection) === "object") {
-        //If aCollection is an object (but isn't an array)
-        for (let i in aCollection) {
-            //Iterate through aCollection
-            newArray.push(aFunction(aCollection[i], i, aCollection));
-            //Push the function call into newArray with the value, key, and aCollection
-        }
+ 
     }
 
     return newArray;

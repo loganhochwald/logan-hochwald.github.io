@@ -72,10 +72,10 @@ module.exports.typeOf = typeOf;
  * first: Designed to take an array and number, returns an array depending on the value of the arguments: if
  * array is not an array or number is negative, returns an empty array. If number is either not given or 
  * not a number, return the first element of the array argument. If number is greater than array length, 
- * return the array. Otherwise, return the first number of items in the array. 
+ * return the array. Otherwise, returns the first n number of elements in the array. 
  * 
  * @param { Array } array: Function takes in an array to be modified by the number argument (if inputted).
- * @param { Number } number: Function takes in a number to be used to modify the array argument.
+ * @param { Number } number: Function takes in a number to indicate how many first elements to return.
  * @return { Array }: Function returns an array depending on array and number arguments.
  */
 
@@ -102,10 +102,10 @@ module.exports.first = first;
  * last: Designed to take in an array and number; returns an array depending on the inputted values. If
  * array is not an array or number is negative, return an empty array. If number is either not given or 
  * not a number, return the last element of the array argument. If number is greater than array length, 
- * return the array. Otherwise, return the first number of items in the array.
+ * return the array. Otherwise, returns the first n number of elements in the array.
  * 
  * @param { Array } array: Function takes in an array to be modified by the number argument (if inputted).
- * @param { Number } number: Function takes in a number to be used to modify the array argument.
+ * @param { Number } number: Function takes in a number to indicate how many first elements to return.
  * @return { Array }: Function returns an array depending on array and number arguments.
  */
 
@@ -135,7 +135,7 @@ module.exports.last = last;
  * 
  * @param { Array } array: Function takes in an array to be iterated through and compared to value.
  * @param { Value } value: Function takes in a value to compare to each array element.
- * @return { Number }: Function returns a number or strictly -1 depending on array and value arguments.
+ * @return { Number }: Function returns the index of the value found, otherwise -1 is returned if the value is not found.
  */
 
 function indexOf (array, value) {
